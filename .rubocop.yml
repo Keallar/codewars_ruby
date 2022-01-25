@@ -16,3 +16,5 @@ Style/WordArray:
 Style/StringLiteralsInInterpolation:
   Enabled: false
   
+Naming/MethodParameterName:
+  Length: 1
