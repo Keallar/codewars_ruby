@@ -20,6 +20,12 @@ def sum_pairs(ints, s)
     end
   end 
   min.eql?(1000) ? nil : [ans[0][0], ans[1][0]]
+
+  # seen = {}
+  # for i in ints do
+  #   return [s-i, i] if seen[s-i]
+  #   seen[i] = true
+  # end
 end
 
 l1 = [1, 4, 8, 7, 3, 15]
