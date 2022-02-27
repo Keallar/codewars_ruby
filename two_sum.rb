@@ -4,7 +4,6 @@ require 'byebug'
 def two_sum(numbers, target)
   numbers.each_with_index do |n, i|
     (numbers.length - i - 1).times do |t|
-      # byebug
       return [i, t + i + 1] if n + numbers[t + i + 1] == target 
     end
   end
