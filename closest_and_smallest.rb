@@ -2,20 +2,12 @@ require 'byebug'
 require 'rspec'
 
 def closest(strng)
-  return [] if strng.empty?
-
-  arr = []
-  strng.split(' ').each_with_index do |s, i|
-    num = s.chars.map(&:to_i).inject(:+)
-    arr << [num, i, s.to_i]
-  end
-  ans = [arr[0], arr[1]]
-  arr.each_with_index do |a1, i1|
-    ans << a1
-    arr.each do |a2|
-      ans = [a1, a2] if (a1[0] - a2[0]) < (ans[0][0] - ans[1][0]) 
-    end
-  end
+  strng.split
+       .map
+       .with_index { |a, i| [a.chars.map(&:to_i).reduce(0, &:+), i, a.to_i] }
+       .sort
+       .each_cons(2)
+       .min_by { |a| [a[1][0] - a[0][0]] } || []
 end
 
 puts "Answer1:#{closest('')}"
@@ -25,6 +17,12 @@ puts "Answer4:#{closest('241259 154 155206 194 180502 147 300751 200 406683 37 5
 
 describe "closest and smallest" do
   it 'method' do
-    
+    expect("456899 50 11992 176 272293 163 389128 96 290193 85 52").to eq([[13, 9, 85], [14, 3, 176]])
+    expect("239382 162 254765 182 485944 134 468751 62 49780 108 54").to eq([[8, 5, 134], [8, 7, 62]])
+    expect("4241259 154 155206 194 180502 147 300751 200 406683 37 57").to eq([[10, 1, 154], [10, 9, 37]])
+    expect("89998 187 126159 175 338292 89 39962 145 394230 167 1").to eq([[13, 3, 175], [14, 9, 167]])
+    expect("462835 148 467467 128 183193 139 220167 116 263183 41 52").to eq([[13, 1, 148], [13, 5, 139]])
+    expect("403749 18 278325 97 304194 119 58359 165 144403 128 38").to eq([[11, 5, 119], [11, 9, 128]])
+    expect("28706 196 419018 130 49183 124 421208 174 404307 60 24").to eq([[6, 9, 60], [6, 10, 24]])
   end
 end
