@@ -15,9 +15,16 @@ Style/WordArray:
 
 Style/StringLiteralsInInterpolation:
   Enabled: false
+
+Naming/FileName:
+  Enabled: false
   
 Naming/MethodParameterName:
   MinNameLength: 1
 
 Layout/LineLength:
   Max: 300
+
+Metrics/AbcSize:
+  Max: 40
+  
