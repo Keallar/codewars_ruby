@@ -1,4 +1,4 @@
-require 'rspec'
+require 'test/unit'
 require 'byebug'
 
 def dbl_linear(n)
@@ -23,11 +23,12 @@ puts "Answer1: #{dbl_linear(10)}"
 puts "Answer2: #{dbl_linear(20)}"
 puts "Answer3: #{dbl_linear(30)}"
 
-# Test.describe("dbl_linear") do
-#   Test.it("Basic tests") do
-#     testing(dbl_linear(10), 22)
-#     testing(dbl_linear(20), 57)
-#     testing(dbl_linear(30), 91)
-#     testing(dbl_linear(50), 175)
-#   end
-# end
+class TestCase < Test::Unit::TestCase
+  def testing(actual, expected)
+    assert_equal(dbl_linear(10), 22)
+    assert_equal(dbl_linear(20), 57)
+    assert_equal(dbl_linear(30), 91)
+    assert_equal(dbl_linear(50), 175)
+  end
+end
+
